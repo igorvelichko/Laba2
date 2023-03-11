@@ -1,86 +1,52 @@
-#include <stdio.h> 
-#include <stdlib.h> 
-#include <math.h>  
-int main(int argc, char *argv[]) { 
- double a, b, c, d, e, f, g, m, n, A, B; 
- printf("Enter number: "); 
- scanf("%lf", &a); 
- printf("Enter number: "); 
- scanf("%lf", &b); 
- printf("Enter number: "); 
- scanf("%lf", &c); 
- printf("Enter number: "); 
- scanf("%lf", &d); 
- printf("Enter number: "); 
- scanf("%lf", &e); 
- printf("Enter number: "); 
- scanf("%lf", &f); 
- printf("Enter number: "); 
- scanf("%lf", &g); 
- printf("Enter number: "); 
- scanf("%lf", &m); 
- printf("Enter number: "); 
- scanf("%lf", &n); 
-  
- double mas[9] = { 
- a, b, c, 
- d, e, f, 
- g, m, n 
- }; 
-  
-    for(int i = 0; i<9; i++){ 
-     printf("%.2lf ", mas[i]); 
-  if(i == 2 || i == 5){ 
-   printf("\n"); 
-   i++; 
-   printf("%.2lf ", mas[i]); 
-    
+#include <stdio.h>  
+#include <stdlib.h>  
+#include <math.h>   
+ 
+int main() 
+{ 
+ int n, p, i, j; 
+ printf("Enter size your matrix: "); 
+ scanf("%d \n", &n); 
+  double matrix[n][n]; 
+  printf("Enter your numbers in mas:\n"); 
+  for(int i = 0; i < n; i++){ 
+    for(int j = 0; j < n; j++){ 
+      scanf("%lf", &matrix[i][j]); 
+    } 
   } 
-  if(i == 8){ 
-   printf("\n"); 
-  }; 
- }; 
- A = mas[0] + mas[4] + mas[8]; 
- B = mas[6] + mas[4] + mas[2]; 
- printf("%.2lf \n", A); 
- printf("%.2lf \n", B);  
-  
- int x, y, z, w; 
- printf("Enter number: "); 
- scanf("%d", &x); 
- printf("Enter number: "); 
- scanf("%d", &y); 
- printf("Enter number: "); 
- scanf("%d", &z); 
- printf("Enter number: "); 
- scanf("%d", &w);  
-  
-  
- int massive[4] = { 
- x, y, 
- z, w 
- }; 
- for(int i = 0; i < 4; i++){ 
-  printf("%d ", massive[i]); 
-  if(i == 1){ 
-   printf("\n"); 
-   i++; 
-   printf("%d ", massive[i]); 
+  double sum1 = 0, sum2 = 0; 
+  for(int i = 0; i < n; i++) 
+  { 
+    sum2 += matrix[i][2-i]; 
+    sum1 += matrix[i][i]; 
   } 
-  if(i == 3){ 
-   printf("\n"); 
-  } 
- }; 
-  
- for(int i = 0; i < 4; i++){ 
-  if(i % 2 == 0){ 
-   argc = massive[i] * x + massive[i+1] * z; 
-   printf("%d ", argc); 
-  } 
-  if(i % 2 == 1){ 
-   argc = massive[i-1] * y + massive[i] * w; 
-   printf("%d \n", argc); 
-  } 
- }; 
- return 0; 
+  printf("Your sum on first line: %lf\n", sum1); 
+  printf("Your sum on second line: %lf\n", sum2);  
+   
+  int mas[n][n]; 
+  int res[n][n];
+  printf("Enter your nambers in mas:\n"); 
+  for(int i = 0; i < n; i++){ 
+   for(int j = 0; j < n; j++){ 
+    scanf("%d", &mas[i][j]); 
+   } 
+   } 
+    for (int i=0; i < n; i++){
+        for(int j = 0; j<n; j++){
+            res[i][j] = 0;
+            for(int p=0; p<n; p++){
+                res[i][j] += mas[i][p]*mas[p][j];
+
+            }
+        }
+    }
+
+    printf ("Result:\n");
+    for (i=0; i<n; i++){
+            for(j=0; j<n; j++)
+            {
+                printf("%d ", res[i][j]);
+            }
+        printf("\n");
+        }
 }
